@@ -1,7 +1,6 @@
 Twibright Optar
 ===============
 
-[![Build Status](https://travis-ci.org/colindean/optar.png?branch=master)](https://travis-ci.org/colindean/optar)
 
 _**Special note:** The repository of optar at http://github.com/colindean/optar 
 exists because I (@colindean) had difficulties finding the source and it seemed
@@ -155,3 +154,4 @@ Twibright Optar homepage: http://ronja.twibright.com/optar/
 
 Improvements © 2012-2018 Colin Dean
 
+© GPL 2024 Michael Kilby
