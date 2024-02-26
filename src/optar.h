@@ -4,8 +4,7 @@
 #define MAX(x,y) ((x)>(y)?(x):(y))
 
 #define BORDER 2 /* In pixels. Thickness of the border */
-#define CHALF 3 /* Size of the cross half. Size of the cross is CHALF*2 x CHALF*2.
-		   */
+#define CHALF 3  /* Size of the cross half. Size of the cross is CHALF*2 x CHALF*2.*/
 #define CPITCH 24 /* Distance between cross centers */
 
 /* XCROSSES A4 65, US Letter 67. */
@@ -13,8 +12,7 @@
 /* YCROSSES A4 93, US Letter 87. */
 #define YCROSSES 87 /* Number of crosses vertically */
 
-#define DATA_WIDTH (CPITCH*(XCROSSES-1)+2*CHALF) /* The rectangle occupied by
-						    the data and crosses */
+#define DATA_WIDTH (CPITCH*(XCROSSES-1)+2*CHALF) /* The rectangle occupied by the data and crosses */
 #define DATA_HEIGHT (CPITCH*(YCROSSES-1)+2*CHALF)
 #define WIDTH (2*BORDER+DATA_WIDTH) /* In pixels, including the border */
 /* In pixels, including the border and the label */
@@ -42,7 +40,8 @@
 #define TOTALBITS ((long)REPPIXELS*(YCROSSES-1)+NARROWPIXELS)
 
 /* Hamming codes with parity */
-#define FEC_ORDER 1 /* Can be 2 to 5 inclusive. 
+#define FEC_ORDER 1 
+			/* Can be 2 to 5 inclusive. 
 			   5 is 26/32,
 			   4 is 11/16,
 			   3 is 4/8,
@@ -61,8 +60,7 @@
 /* Hamming net channel capacity */
 #define FEC_SYMS (TOTALBITS/FEC_LARGEBITS)
 #define NETBITS (FEC_SYMS*FEC_SMALLBITS) /* Net payload bits */
-#define USEDBITS (FEC_SYMS*FEC_LARGEBITS) /* Used raw bits to store
-						     Hamming symbols */
+#define USEDBITS (FEC_SYMS*FEC_LARGEBITS) /* Used raw bits to store Hamming symbols */
 
 /* Functions from common.c */
 extern unsigned long parity(unsigned long in);

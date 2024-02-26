@@ -35,7 +35,7 @@ uninstall:
 	rm /usr/local/bin/pgm2ps
 
 clean:
-	rm -f $(BINARIES) optar-*.tar.gz golay_codes.c *.o
+	rm -f $(BINARIES) optar-*.tar.gz src/golay_codes.c *.o
 	rm -f *.pgm *.ps
 
 common.o: src/common.c src/optar.h
