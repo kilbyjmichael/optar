@@ -1,17 +1,37 @@
 #!/bin/sh
-while [ $# -gt 0 ]; do
-	target=`echo "$1" | sed -e 's/\.pgm$/.ps/'`
-	echo Converting "$1" to "$target"
-# We assume roughly 0.25 inch border (18) on each side.
-# A4 is 595.27559 x 841.889763 (595 x 842)
-# Letter is 8.5x11 inches or 612x792. 
 
-# Change to  556.56x807.12+19.22+17.44 for A4 and
-#	     573.84x755.28+19.08+18.36 for US Letter.
-#            Don't forget to change XCROSSES and YCROSSES in optar.h and
-#            recompile.
-	convert -page 556.56x807.12+19.22+17.44 "$1" "$target"
-#	convert -page 573.84x755.28+19.08+18.36 "$1" "$target"
-	shift
+# Check if the number of arguments is correct
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <a4|letter> <path to pgm directory>"
+    exit 1
+fi
+
+# Extract the arguments
+paper_size="$1"
+pgm_directory="$2"
+
+# Check if the paper size is valid
+if [ "$paper_size" != "a4" ] && [ "$paper_size" != "letter" ]; then
+    echo "Error: Invalid paper size. Please specify 'a4' or 'letter'."
+    exit 1
+fi
+
+# Loop over .pgm files in the directory
+for file in "$pgm_directory"/*.pgm; do
+    # Check if file exists
+    if [ -f "$file" ]; then
+        target="${file%.pgm}.ps"
+
+        # Convert based on paper size
+        if [ "$paper_size" = "a4" ]; then
+            # Convert for A4
+            convert -page 556.56x807.12+19.22+17.44 "$file" "$target"
+        elif [ "$paper_size" = "letter" ]; then
+            # Convert for US Letter
+            convert -page 573.84x755.28+19.08+18.36 "$file" "$target"
+        fi
+		echo "Converted $file to $target"
+    else
+        echo "File not found: $file"
+    fi
 done
-
